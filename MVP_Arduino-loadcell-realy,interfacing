@@ -1,0 +1,88 @@
+//developed-modified by P Mukundan , HariSree |_limited distribution and modification_,for callibration follow github shared by authors.
+
+
+#include <Arduino.h>
+#include "HX711.h"
+
+
+const int LOADCELL_DOUT_PIN = 2;
+const int LOADCELL_SCK_PIN = 3;
+int relayPin = 9;
+
+int finals;
+
+HX711 scale;
+
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("HX711 Demo");
+  Serial.println("Initializing the scale");
+  pinMode(relayPin, OUTPUT);
+
+  scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
+
+  Serial.println("Before setting up the scale:");
+  Serial.print("read: \t\t");
+  Serial.println(scale.read());      // print a raw reading 
+
+  Serial.print("read average: \t\t");
+  Serial.println(scale.read_average(20));   // print the average of 20 readings from the ADC
+
+  Serial.print("get value: \t\t");
+  Serial.println(scale.get_value(5));   // print the average of 5 readings from the ADC minus the tare weight (not set yet)
+
+  Serial.print("get units: \t\t");
+  Serial.println(scale.get_units(5), 1);  // print the average of 5 readings from the ADC minus tare weight (not set) divided
+           
+            
+  scale.set_scale(-2303.48571);
+                      // this value is obtained by calibrating the scale with known weights
+  scale.tare();               // reset the scale to 0
+
+  Serial.println("After setting up the scale:");
+
+  Serial.print("read: \t\t");
+  Serial.println(scale.read());                 // print a raw reading from the ADC
+
+  Serial.print("read average: \t\t");
+  Serial.println(scale.read_average(20));       // print the average of 20 readings from the ADC
+
+  Serial.print("get value: \t\t");
+  Serial.println(scale.get_value(5));   // print the average of 5 readings from the ADC minus the tare weight, set with tare()
+
+  Serial.print("get units: \t\t");
+  Serial.println(scale.get_units(5), 1);        // print the average of 5 readings from the ADC minus tare weight, divided
+            // by the SCALE parameter set with set_scale
+
+  Serial.println("Readings:");
+  finals = (scale.read_average(20));
+  
+  
+}
+
+void loop() {
+  Serial.print("one reading:\t");
+  Serial.print(scale.get_units(), 1);
+  Serial.print("\t| average:\t");
+  Serial.println(scale.get_units(10), 5);
+ 
+  float i = scale.get_units(); // get output value ; 
+  int wt = (int)i;
+  
+  if (wt > 50)//variable condition can be added
+  {
+  
+   //Serial.print("hello im here");
+   digitalWrite(relayPin, HIGH); 
+  }
+  else
+  {
+   digitalWrite(relayPin, LOW);
+     
+  }
+  
+  
+
+  delay(1000);
+}
