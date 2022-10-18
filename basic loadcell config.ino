@@ -1,4 +1,4 @@
-#include "HX711.h"  //You must have this library in your arduino library folder
+#include "HX711.h"  //You must have this library in your arduino library
  
 #define DOUT  2
 #define CLK  3
