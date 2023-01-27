@@ -1,6 +1,5 @@
 //developed-modified by P Mukundan , HariSree |_limited distribution and modification_,for callibration follow github shared by authors.
 
-
 #include <Arduino.h>
 #include "HX711.h"
 
