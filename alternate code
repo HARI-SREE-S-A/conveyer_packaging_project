@@ -4,7 +4,7 @@
 #include "HX711.h"
 s
 kgddtgg
-
+y
 
 #define DOUT  3
 #define CLK  2
