@@ -3,7 +3,7 @@
 
 #include "HX711.h"
 s
-kgddtg
+kgddtgg
 
 
 #define DOUT  3
