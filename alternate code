@@ -2,9 +2,7 @@
 
 
 #include "HX711.h"
-s
-kgddtgg
-yh
+
 
 #define DOUT  3
 #define CLK  2
