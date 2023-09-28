@@ -7,6 +7,8 @@ This project aims to design and develop a smart automated sorting and packing ma
 
 The machine will be equipped with sensors  to detect and sort items based on their size, shape, and weight. It will also be able to pack the items in a variety of packaging materials such as boxes or bags, depending on the customer's needs. Additionally, the machine will be integrated with a software system that will manage the inventory and keep track of the items being packed .
 
+
+
 ## Project tasks
 
 The tasks for this project can be found at the following link: [https://www.notion.so/System-design-and-hardware-requirements-d707a1a88acf4a1f98fed18a23bbc96e](https://www.notion.so/System-design-and-hardware-requirements-d707a1a88acf4a1f98fed18a23bbc96e)
